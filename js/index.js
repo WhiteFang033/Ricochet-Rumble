@@ -27,6 +27,7 @@ for (let i = 0; i < 8; i++) {
 
             rotateL.disabled = true;
             rotateR.disabled = true;
+            rotateRico = false;
 
             if(trunRed && isPaused != true){
                 if ((e.target.id != 'tank1' && e.target.id != 'tank2') && ((e.target.matches('img') || (e.target.matches('.dot')))) && (e.target.matches('.red'))){
@@ -71,44 +72,94 @@ for (let i = 0; i < 8; i++) {
                     rotateL.disabled = false;
                     rotateR.disabled = false;
 
-                    //removing other eventListneres
-                    rotateL.removeEventListener('click', rotateRicoBlueL);
-                    rotateL.removeEventListener('click',rotateSemiRicoBlueL);
-                    rotateL.removeEventListener('click', rotateSemiRicoRedL)
-                    rotateR.removeEventListener('click', rotateRicoBlueR);
-                    rotateR.removeEventListener('click', rotateSemiRicoBlueR);
-                    rotateR.removeEventListener('click', rotateSemiRicoRedR);
-
                     //rotate left
-                    const ricoRed = document.getElementById('ricochet2');
-                    var rotateRicoRedL = rotateLeft.bind(null, ricoRed, "red", ricoRotationRed);
-                    rotateL.addEventListener('click', rotateRicoRedL)
+                    rotateL.addEventListener('click', ()=>{
+                        let ricoRed = document.getElementById('ricochet2');
+                        ricoRotationRed += 90;
+                        ricoRed.style.transform = `rotateZ(${ricoRotationRed}deg)`;
 
+                        if(ricoRed.dataset.reflect === 'right'){
+                            ricoRed.dataset.reflect = 'left';
+                        }
+                        else if(ricoRed.dataset.reflect === 'left'){
+                                ricoRed.dataset.reflect = 'right';
+                        }
+                        rotateL.disabled = true;
+                        rotateR.disabled = true;
+                        shootBullet("red");
+                        rotateRico = true;
+                        turnBlue = true;
+                        trunRed = false;
+                        removeMoveOptions();
+                    })
                     //rotateRight
-                    var rotateRicoRedR = rotateRight.bind(null, ricoRed, "red", ricoRotationRed);
-                    rotateR.addEventListener('click', rotateRicoRedR);
+                    rotateR.addEventListener('click', ()=>{
+                        let ricoRed = document.getElementById('ricochet2');
+
+                        ricoRotationRed -= 90;
+                        ricoRed.style.transform = `rotateZ(${ricoRotationRed}deg)`;
+
+                        if(ricoRed.dataset.reflect === 'right'){
+                            ricoRed.dataset.reflect = 'left';
+                        }
+                        else if(ricoRed.dataset.reflect === 'left'){
+                                ricoRed.dataset.reflect = 'right';
+                        }
+                        rotateL.disabled = true;
+                        rotateR.disabled = true;
+                        shootBullet("red");
+                        rotateRico = true;
+                        turnBlue = true;
+                        trunRed = false;
+                        removeMoveOptions();
+                    })
                 }
                 else if(e.target.id === 'semi-ricochet2' && isPaused !=true){
-
                     rotateL.disabled = false;
                     rotateR.disabled = false;
-
-                    //removing other eventListneres
-                    rotateL.removeEventListener('click', rotateRicoBlueL);
-                    rotateL.removeEventListener('click',rotateSemiRicoBlueL);
-                    rotateL.removeEventListener('click', rotateRicoRedL)
-                    rotateR.removeEventListener('click', rotateRicoBlueR);
-                    rotateR.removeEventListener('click', rotateSemiRicoBlueR);
-                    rotateR.removeEventListener('click', rotateRicoRedR);
-
                     //rotateLeft
-                    let semiRicoRed = document.getElementById('semi-ricochet2');
-                    var rotateSemiRicoRedL = rotateLeft.bind(null, semiRicoRed, "red", semiRicoRotationRed);
-                    rotateL.addEventListener('click', rotateSemiRicoRedL);
 
+                    rotateL.addEventListener('click', (evt)=>{
+                        let semiRicoRed = document.getElementById('semi-ricochet2');
+
+                        semiRicoRotationRed += 90;
+                        semiRicoRed.style.transform = `rotateZ(${semiRicoRotationRed}deg)`;
+
+                        if(semiRicoRed.dataset.reflect === 'right'){
+                            semiRicoRed.dataset.reflect = 'left';
+                        }
+                        else if(semiRicoRed.dataset.reflect === 'left'){
+                                semiRicoRed.dataset.reflect = 'right';
+                        }
+                        rotateL.disabled = true;
+                        rotateR.disabled = true;
+                        shootBullet("red")
+                        rotateRico = true;
+                        turnBlue = true;
+                        trunRed = false;
+                        removeMoveOptions();
+                    })
                     //rotateRight
-                    var rotateSemiRicoRedR = rotateRight.bind(null, semiRicoRed, "red", semiRicoRotationRed);
-                    rotateR.addEventListener('click', rotateSemiRicoRedR);
+                    rotateR.addEventListener('click', (evt)=>{
+                        let semiRicoRed = document.getElementById('semi-ricochet2');
+
+                        semiRicoRotationRed-= 90;
+                        semiRicoRed.style.transform = `rotateZ(${semiRicoRotationRed}deg)`;
+
+                        if(semiRicoRed.dataset.reflect === 'right'){
+                            semiRicoRed.dataset.reflect = 'left';
+                        }
+                        else if(semiRicoRed.dataset.reflect === 'left'){
+                                semiRicoRed.dataset.reflect = 'right';
+                        }
+                        rotateL.disabled = true;
+                        rotateR.disabled = true;
+                        shootBullet("red")
+                        rotateRico = true;
+                        turnBlue = true;
+                        trunRed = false;
+                        removeMoveOptions();
+                    })
                 }
                 
                 if(!rotateRico){
@@ -167,44 +218,108 @@ for (let i = 0; i < 8; i++) {
                     if(e.target.id === 'ricochet1' && isPaused != true){
                         rotateL.disabled = false;
                         rotateR.disabled = false;
-
-                        //removing other eventListneres
-                        rotateL.removeEventListener('click', rotateRicoRedL);
-                        rotateL.removeEventListener('click',rotateSemiRicoRedL);
-                        rotateL.removeEventListener('click', rotateSemiRicoBlueL)
-                        rotateR.removeEventListener('click', rotateRicoRedR);
-                        rotateR.removeEventListener('click', rotateSemiRicoBlueR);
-                        rotateR.removeEventListener('click', rotateSemiRicoRedR);
-
                         //RotateLeft
-                        let ricoBlue = document.getElementById('ricochet1');
-                        var rotateRicoBlueL = rotateLeft.bind(null, ricoBlue, "blue", ricoRotationBlue);
-                        rotateL.addEventListener('click', rotateRicoBlueL);
-                        //rotateRight
+                        rotateL.addEventListener('click', ()=>{
+                            let ricoBlue = document.getElementById('ricochet1');
 
-                        var rotateRicoBlueR = rotateRight.bind(null, ricoBlue, "blue", ricoRotationBlue);
-                        rotateR.addEventListener('click', rotateRicoBlueR);
+                            ricoRotationBlue += 90;
+                            ricoBlue.style.transform = `rotateZ(${ricoRotationBlue}deg)`;
+
+                            if(ricoBlue.dataset.reflect === 'right'){
+                                ricoBlue.dataset.reflect = 'left';
+                            }
+                            else if(ricoBlue.dataset.reflect === 'left'){
+                                ricoBlue.dataset.reflect = 'right';
+                            }
+                            rotateL.disabled = true;
+                            rotateR.disabled = true;
+                            shootBullet("blue");
+                            rotateRico = true;
+                            turnBlue = false;
+                            trunRed = true;
+                            removeMoveOptions();
+                        });
+                        //rotateRight
+                        rotateR.addEventListener('click', ()=>{
+                            let ricoBlue = document.getElementById('ricochet1');
+
+                            ricoRotationBlue -= 90;
+                            ricoBlue.style.transform = `rotateZ(${ricoRotationBlue}deg)`;
+
+                            if(ricoBlue.dataset.reflect === 'right'){
+                                ricoBlue.dataset.reflect = 'left';
+                            }
+                            else if(ricoBlue.dataset.reflect === 'left'){
+                                ricoBlue.dataset.reflect = 'right';
+                            }
+                            rotateR.disabled = true;
+                            rotateL.disabled = true;
+                            shootBullet("blue");
+                            rotateRico = true;
+                            turnBlue = false;
+                            trunRed = true;
+                            removeMoveOptions();
+                        })
                     }
                     else if(e.target.id === 'semi-ricochet1' && isPaused != true){
                         rotateL.disabled = false;
                         rotateR.disabled = false;
 
-                        //removing other eventListneres
-                        rotateL.removeEventListener('click', rotateRicoRedL);
-                        rotateL.removeEventListener('click',rotateRicoBlueL);
-                        rotateL.removeEventListener('click', rotateSemiRicoRedL)
-                        rotateR.removeEventListener('click', rotateRicoRedR);
-                        rotateR.removeEventListener('click', rotateRicoBlueR);
-                        rotateR.removeEventListener('click', rotateSemiRicoRedR);
-
                         //rotateLeft
-                        let semiRicoBlue = document.getElementById('semi-ricochet1');
-                        var rotateSemiRicoBlueL = rotateLeft.bind(null, semiRicoBlue, "blue", semiRicoRotationBlue);
-                        rotateL.addEventListener('click', rotateSemiRicoBlueL)
+                        rotateL.addEventListener('click', (evt)=>{
+                            let semiRicoBlue = document.getElementById('semi-ricochet1');
+
+                            semiRicoRotationBlue += 90;
+                            semiRicoBlue.style.transform = `rotateZ(${semiRicoRotationBlue}deg)`;
+                            // if(semiRicoBlue.classList.contains('rotate90')){
+                            //     semiRicoBlue.classList.remove('rotate90');
+                            // }
+                            // else{
+                            //     semiRicoBlue.classList.add('rotate90');
+                            // }
+                            
+                            if(semiRicoBlue.dataset.reflect === 'right'){
+                                semiRicoBlue.dataset.reflect = 'left';
+                            }
+                            else if(semiRicoBlue.dataset.reflect === 'left'){
+                                semiRicoBlue.dataset.reflect = 'right';
+                            }
+                            rotateL.disabled = true;
+                            rotateR.disabled = true;
+                            shootBullet("blue")
+                            rotateRico = true;
+                            turnBlue = false;
+                            trunRed = true;
+                            removeMoveOptions();
+                        })
 
                         //rotateRight
-                        var rotateSemiRicoBlueR = rotateRight.bind(null, semiRicoBlue, "blue", semiRicoRotationBlue);
-                        rotateR.addEventListener('click', rotateSemiRicoBlueR)
+                        rotateR.addEventListener('click', (evt)=>{
+                            let semiRicoBlue = document.getElementById('semi-ricochet1');
+
+                            semiRicoRotationBlue -= 90;
+                            semiRicoBlue.style.transform = `rotateZ(${semiRicoRotationBlue}deg)`;
+                            // if(semiRicoBlue.classList.contains('rotate90')){
+                            //     semiRicoBlue.classList.remove('rotate90');
+                            // }
+                            // else{
+                            //     semiRicoBlue.classList.add('rotate90');
+                            // }
+                            
+                            if(semiRicoBlue.dataset.reflect === 'right'){
+                                semiRicoBlue.dataset.reflect = 'left';
+                            }
+                            else if(semiRicoBlue.dataset.reflect === 'left'){
+                                semiRicoBlue.dataset.reflect = 'right';
+                            }
+                            rotateL.disabled = true;
+                            rotateR.disabled = true;
+                            shootBullet("blue")
+                            rotateRico = true;
+                            turnBlue = false;
+                            trunRed = true;
+                            removeMoveOptions();
+                        })
                     }
                     
                     if(!rotateRico){
@@ -657,45 +772,3 @@ function gameOver(side){
     })
 }
 
-
-
-//Rotation Functions
-
-function rotateLeft(elem, bullet, elemRotation){
-    let ricoRed = document.getElementById('ricochet2');
-    elemRotation += 90;
-    elem.style.transform = `rotateZ(${elemRotation}deg)`;
-
-    if(elem.dataset.reflect === 'right'){
-        elem.dataset.reflect = 'left';
-    }
-    else if(elem.dataset.reflect === 'left'){
-            elem.dataset.reflect = 'right';
-    }
-    rotateL.disabled = true;
-    rotateR.disabled = true;
-    shootBullet(bullet);
-    rotateRico = true;
-    turnBlue = true;
-    trunRed = false;
-    removeMoveOptions();
-}
-
-function rotateRight(elem, bullet, elemRotation){
-    elemRotation -= 90;
-    elem.style.transform = `rotateZ(${elemRotation}deg)`;
-
-    if(elem.dataset.reflect === 'right'){
-        elem.dataset.reflect = 'left';
-    }
-    else if(elem.dataset.reflect === 'left'){
-            elem.dataset.reflect = 'right';
-    }
-    rotateL.disabled = true;
-    rotateR.disabled = true;
-    shootBullet(bullet);
-    rotateRico = true;
-    turnBlue = true;
-    trunRed = false;
-    removeMoveOptions();
-}
