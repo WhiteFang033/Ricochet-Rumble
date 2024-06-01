@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricochet Rumble</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/utilities.js" defer></script>
+    <script src="js/timer.js" defer></script>
+    <script src="js/index.js" defer></script>
+</head>
+
+<body>
+    <div class="head"><img src="assets/images/logo.png" alt=""></div>
+    <div class="options">
+        <img id="dropdown" data-state = 'off' src="assets/images/menu.png" alt="" title="Menu">
+        <div class="pause" id="pause" title="Pause"><img src="assets/images/pause.png" alt=""></div>
+        <!-- <div class="resume" id="resume"><img src="assets/images/resume.png" alt=""></div> -->
+        <div class="reset" id="reset"><img src="assets/images/reset.png" alt="" title="Reset"></div>
+    </div>
+    <div class="container">
+        <div id="heading" class="heading bit-font">Red's Turn</div>
+        <div class="timer" id="timer">Make First Move</div>
+        <div class="field">
+           <div class="row firstRow">
+            <span class="block"></span>
+            <span class="block"></span>
+            <span class="block"><img class="red" id="ricochet2" data-reflect="right" src="assets/svgs/ricochet_red.svg" alt="" ></span>
+            <span class="block"><img class="red" id="tank2" src="assets/svgs/tank_red.svg" alt=""></span>
+            <span class="block"><img class="red" id="titan2" src="assets/svgs/titan_red.svg" alt=""></span>
+            <span class="block"><img class="red" id="cannon2" src="assets/svgs/cannon_red.svg" alt="" ></span>
+            <span class="block"><img class="red" id="semi-ricochet2" data-reflect="right" src="assets/svgs/semi-ricochet_red.svg" alt="" ></span>
+            <span class="block"></span>
+           </div>
+           <div class="row">
+            <span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span>
+           </div>
+           <div class="row">
+            <span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span>
+           </div>
+           <div class="row">
+            <span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span>
+           </div>
+           <div class="row">
+            <span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span>
+           </div>
+           <div class="row">
+            <span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span>
+           </div>
+           <div class="row">
+            <span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span><span class="block"></span>
+           </div>
+           <div class="row lastRow">
+            <span class="block"></span>
+            <span class="block"></span>
+            <span class="block"><img class="blue" id="ricochet1" data-reflect="right" src="assets/svgs/ricochet_blue.svg" alt="" ></span>
+            <span class="block"><img class="blue" id="tank1" src="assets/svgs/tank_blue.svg" alt=""></span>
+            <span class="block"><img class="blue" id="titan1" src="assets/svgs/titan_blue.svg" alt=""></span>
+            <span class="block"><img class="blue" id="cannon1" src="assets/svgs/cannon_blue.svg" alt="" ></span>
+            <span class="block"><img class="blue" id="semi-ricochet1" data-reflect="right" src="assets/svgs/semi-ricochet_blue.svg" alt="" ></span>
+            <span class="block"></span>
+           </div>
+        </div>
+        <div class="optionsBlue">
+            <button class="rotate" id="rotateL">Left</button>
+            <button class="rotate" id="rotateR">Right</button>
+        </div>
+    </div>
+    <div class="game-over">
+        <div class="game-over-menu">
+            <div class="winner-declaration">Blue Wins</div>
+            <button class="play-again">Play Again</button>
+        </div>
+    </div>
+</body>
+</html>

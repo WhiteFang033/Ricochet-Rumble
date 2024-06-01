@@ -1,0 +1,82 @@
+@media only screen and (max-width: 350px){
+    .head img{
+        width: 70%;
+    }
+    .container{
+        height: 60%;
+    }
+    .field{
+        height: 30svh;
+        width: 30svh;
+        display: grid;
+        grid-template-rows: repeat(8, 1fr);
+    }
+    button{
+        width: 15%;
+        font-size: 40%;
+    }
+}
+@media only screen and (min-width: 768px){
+    .head img{
+        width: 50%;
+    }
+    .container{
+        height: 60%;
+    }
+}
+@media only screen and (min-width: 850px){
+    .head img{
+        width: 50%;
+    }
+    .container{
+        height: 50%;
+    }
+    .field{
+        height: 30svh;
+        width: 30svh;
+        border-radius: 10px;
+        display: grid;
+        grid-template-rows: repeat(8, 1fr);
+    }
+}
+@media only screen and (min-width: 1000px){
+    .head img{
+        width: 30%;
+    }
+    .container{
+        height: 90%;
+    }
+    .field{
+        height: 60svh;
+        width: 60svh;
+        display: grid;
+        grid-template-rows: repeat(8, 1fr);
+    }
+    button{
+        width: 10%;
+    }
+}
+@media only screen and (min-width: 1200px){
+    .head{
+        width: 20%;
+        display: flex;
+        justify-content: start;
+    }
+    .head img{
+        width: 100%;
+    }
+    .container{
+        height: 90%;
+        position: relative;
+        top: -5%;
+    }
+    .field{
+        height: 70svh;
+        width: 70svh;
+        display: grid;
+        grid-template-rows: repeat(8, 1fr);
+    }
+    button{
+        width: 5%;
+    }
+}
