@@ -78,6 +78,16 @@ body{
     height: 80%;
     width: 80%;
 }
+#semi-ricochet1{
+    transform: rotateX(180deg);
+    transform: rotateZ(180deg);
+    
+}
+
+#semi-ricochet2{
+    transform: rotateZ(90deg);
+    
+}
 .game-over{
     width: 100svw;
     height: 100svh;
@@ -190,11 +200,9 @@ button{
     font-size: 60%;
 }
 
-.rotate90{
-    transform: rotateZ(90deg);
-}
-.rotate0{
-    transform: rotateZ(0deg);
+.rotate{
+    position: relative;
+    z-index: 5;
 }
 
 .redText{
