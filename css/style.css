@@ -42,8 +42,8 @@ body{
 }
 
 .field{
-    height: 40svh;
-    width: 40svh;
+    height: 43svh;
+    width: 43svh;
     display: grid;
     grid-template-rows: repeat(8, 1fr);
 }
@@ -130,8 +130,8 @@ body{
     right: 10px;
     top: 13px;
     background-color: #e0ffff;
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
     padding: 5px;
     border-radius: 50px;
     display: flex;
@@ -143,7 +143,7 @@ body{
     z-index: 9;
 }
 .options img{
-    height: 30px;
+    height: 20px;
     width: auto;
     transition: .4s ease;
 }

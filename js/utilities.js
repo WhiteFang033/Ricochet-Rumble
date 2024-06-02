@@ -24,7 +24,13 @@ dots.addEventListener('click', async ()=>{
         dots.dataset.state = 'on';
     }
     else if(dots.dataset.state === 'on'){
-        options.style.height = '30px';
+        if(window.innerWidth < 800){
+            options.style.height = '20px';
+        }
+        else{
+            options.style.height = '30px';
+        }
+        
         dots.style.transform = 'rotateZ(0deg)';
         Array.from(options.children).forEach(async elem=>{
             if(elem.children.length != 0){

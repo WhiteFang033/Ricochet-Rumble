@@ -15,6 +15,13 @@
         width: 15%;
         font-size: 40%;
     }
+    .options{
+        width: 20px;
+        height: 20px;
+    }
+    .options img{
+        height: 20px;
+    }
 }
 @media only screen and (min-width: 768px){
     .head img{
@@ -23,6 +30,7 @@
     .container{
         height: 60%;
     }
+    
 }
 @media only screen and (min-width: 850px){
     .head img{
@@ -54,6 +62,13 @@
     }
     button{
         width: 10%;
+    }
+    .options{
+        width: 30px;
+        height: 30px;
+    }
+    .options img{
+        height: 30px;
     }
 }
 @media only screen and (min-width: 1200px){
