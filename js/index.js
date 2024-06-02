@@ -39,25 +39,87 @@ for (let i = 0; i < 8; i++) {
                     rotateRico = false;
 
                     //adding move options on left and right sides
-                    if (!e.target.matches('.dot') && e.target.parentElement.previousElementSibling.children.length === 0) {
+                    if (!e.target.matches('.dot') && e.target.parentElement.previousElementSibling != null && e.target.parentElement.previousElementSibling.children.length === 0) {
                         e.target.parentElement.previousElementSibling.innerHTML = `<div class ='dot' data-row = ${i} data-col = ${j-1}></div>`;
                     }
-                    if (!e.target.matches('.dot') && e.target.parentElement.nextElementSibling.children.length === 0) {
+                    if (!e.target.matches('.dot') && e.target.parentElement.nextElementSibling != null && e.target.parentElement.nextElementSibling.children.length === 0) {
                         e.target.parentElement.nextElementSibling.innerHTML = `<div class ='dot' data-row = ${i} data-col = ${j+1}></div>`;
                     }
                     
                     console.log(i, j)
                     //adding move options in the above and below rows
-                    if(i===7){
-                        for(k = i ; k>i-2 && k<8 && k>=0; k--){
-                            for(l = j-1; l<j+2 && l<8 && l>=0; l++){
+                    
+                    if(i === 0 && j==0){
+                        for(k = i ; k<i+2; k++){
+                            for(l = j; l<j+2; l++){
                                 if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
                                     {
                                         e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
                                     }
                             }
                         }
-                    }else{
+                    }
+                    else if(i === 7 && j === 0){
+                        for(k = i ; k>i-2; k--){
+                            for(l = j; l<j+2; l++){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                                }
+                        }
+                    }
+                    else if(i === 0 && j === 7){
+                        for(k = i ; k<i+2; k++){
+                            for(l = j; l>j-2; l--){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                            }
+                        }
+                    }
+                    else if(i=== 7 && j === 7){
+                        for(k = i ; k>i-2; k--){
+                            for(l = j; l>j-2; l--){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                            }
+                        }
+                    }
+                    else if(i=== 0){
+                        for(k = i ; k<i+2 && k<8 && k>=0; k++){
+                            for(l = j-1; l<j+2; l++){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                            }
+                        }
+                    }
+                    else if(i===7){
+                        for(k = i ; k>i-2 && k<8 && k>=0; k--){
+                            for(l = j-1; l<j+2 && l<8 && l>=0; l++){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                                }
+                            }
+                        }
+                    else if(j === 0){
+                        for(k = i+1 ; k>i-2 && k<8 && k>=0; k--){
+                            for(l = j; l<j+2; l++){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                                }
+                            }
+                    }
+                    else{
                         for(k = i+1 ; k>i-2 && k<8 && k>=0; k--){
                             for(l = j-1; l<j+2 && l<8 && l>=0; l++){
                                 if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
@@ -240,6 +302,40 @@ for (let i = 0; i < 8; i++) {
                 })
             }
                 }
+                else if ((e.target.id === 'tank2') && ((e.target.matches('img') || (e.target.matches('.dot')))) && (e.target.matches('.red'))){
+
+                    removeMoveOptions();
+                    //adding move options on left and right sides
+                    if (!e.target.matches('.dot') && e.target.parentElement.previousElementSibling.children.length === 0) {
+                        e.target.parentElement.previousElementSibling.innerHTML = `<div class ='dot' data-row = ${i} data-col = ${j-1}></div>`;
+                    }
+                    if (!e.target.matches('.dot') && e.target.parentElement.nextElementSibling.children.length === 0) {
+                        e.target.parentElement.nextElementSibling.innerHTML = `<div class ='dot' data-row = ${i} data-col = ${j+1}></div>`;
+                    }
+
+                    const marks = document.getElementsByClassName('dot');
+                    Array.from(marks).forEach(mark=>{
+                    mark.addEventListener('click', async (evt)=>{
+                        if(isPaused != true){
+                            fieldElements.children[evt.target.dataset.row].children[evt.target.dataset.col].append(e.target);
+                            await sleep(50);
+                            shootBullet("red");
+
+                            if(rotationOptions.children.length !=0){
+                                Array.from(rotationOptions.children).forEach(child=>{
+                                    child.remove();
+                                })
+                            }
+                            
+                            
+                            turnBlue = true;
+                            turnRed = false;
+                        }
+                        
+    
+                    })
+                })
+                }
                 else{
                     removeMoveOptions();
                 }
@@ -248,24 +344,86 @@ for (let i = 0; i < 8; i++) {
                 if ((e.target.id != 'tank1' && e.target.id != 'tank2') && ((e.target.matches('img') || (e.target.matches('.dot')))) && (e.target.matches('.blue'))){
                     removeMoveOptions();
     
-                    if (!e.target.matches('.dot') && e.target.parentElement.previousElementSibling.children.length === 0) {
+                    if (!e.target.matches('.dot') && e.target.parentElement.previousElementSibling != null && e.target.parentElement.previousElementSibling.children.length === 0) {
                         e.target.parentElement.previousElementSibling.innerHTML = `<div class ='dot' data-row = ${i} data-col = ${j-1}></div>`;
                     }
-                    if (!e.target.matches('.dot') && e.target.parentElement.nextElementSibling.children.length === 0) {
+                    if (!e.target.matches('.dot') && e.target.parentElement.nextElementSibling != null && e.target.parentElement.nextElementSibling.children.length === 0) {
                         e.target.parentElement.nextElementSibling.innerHTML = `<div class ='dot' data-row = ${i} data-col = ${j+1}></div>`;
                     }
-                    if(i==0){
-                        for(k = i ; k<i+2 && k<8 && k>=0; k++){
-                            for(l = j-1; l<j+2 && l<8 && l>=0; l++){
+
+                    //adding moving options above and below target
+                    if(i === 0 && j==0){
+                        for(k = i ; k<i+2; k++){
+                            for(l = j; l<j+2; l++){
                                 if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
                                     {
                                         e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
                                     }
                             }
                         }
+                    }
+                    else if(i === 7 && j === 0){
+                        for(k = i ; k>i-2; k--){
+                            for(l = j; l<j+2; l++){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                                }
+                        }
+                    }
+                    else if(i === 0 && j === 7){
+                        for(k = i ; k<i+2; k++){
+                            for(l = j; l>j-2; l--){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                            }
+                        }
+                    }
+                    else if(i=== 7 && j === 7){
+                        for(k = i ; k>i-2; k--){
+                            for(l = j; l>j-2; l--){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                            }
+                        }
+                    }
+                    else if(i=== 0){
+                        for(k = i ; k<i+2 && k<8 && k>=0; k++){
+                            for(l = j-1; l<j+2; l++){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                            }
+                        }
+                    }
+                    else if(i===7){
+                        for(k = i ; k>i-2 && k<8 && k>=0; k--){
+                            for(l = j-1; l<j+2 && l<8 && l>=0; l++){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                                }
+                            }
+                        }
+                    else if(j === 0){
+                        for(k = i+1 ; k>i-2 && k<8 && k>=0; k--){
+                            for(l = j; l<j+2; l++){
+                                if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
+                                    {
+                                        e.target.parentElement.parentElement.parentElement.children[k].children[l].innerHTML = `<div class ='dot' data-row = ${k} data-col = ${l}></div>`;
+                                    }
+                                }
+                            }
                     }
                     else{
-                        for(k = i-1 ; k<i+2 && k<8 && k>=0; k++){
+                        for(k = i+1 ; k>i-2 && k<8 && k>=0; k--){
                             for(l = j-1; l<j+2 && l<8 && l>=0; l++){
                                 if(!e.target.matches('.dot') && e.target.parentElement.parentElement.parentElement.children[k].children[l].children.length === 0)
                                     {
@@ -274,6 +432,7 @@ for (let i = 0; i < 8; i++) {
                             }
                         }
                     }
+                    
 
 
                     if(e.target.id === 'ricochet1' && isPaused != true){
@@ -462,6 +621,40 @@ for (let i = 0; i < 8; i++) {
                     })
                 }
                 }
+                else if ((e.target.id === 'tank1') && ((e.target.matches('img') || (e.target.matches('.dot')))) && (e.target.matches('.blue'))){
+
+                    removeMoveOptions();
+                    //adding move options on left and right sides
+                    if (!e.target.matches('.dot') && e.target.parentElement.previousElementSibling.children.length === 0) {
+                        e.target.parentElement.previousElementSibling.innerHTML = `<div class ='dot' data-row = ${i} data-col = ${j-1}></div>`;
+                    }
+                    if (!e.target.matches('.dot') && e.target.parentElement.nextElementSibling.children.length === 0) {
+                        e.target.parentElement.nextElementSibling.innerHTML = `<div class ='dot' data-row = ${i} data-col = ${j+1}></div>`;
+                    }
+
+                    const marks = document.getElementsByClassName('dot');
+                    Array.from(marks).forEach(mark=>{
+                    mark.addEventListener('click', async (evt)=>{
+                        if(isPaused != true){
+                            fieldElements.children[evt.target.dataset.row].children[evt.target.dataset.col].append(e.target);
+                            await sleep(50);
+                            shootBullet("blue");
+
+                            if(rotationOptions.children.length !=0){
+                                Array.from(rotationOptions.children).forEach(child=>{
+                                    child.remove();
+                                })
+                            }
+                            
+                            
+                            turnBlue = false;
+                            turnRed = true;
+                        }
+                        
+    
+                    })
+                })
+                }
                 else{
                     removeMoveOptions();
                 }
@@ -479,12 +672,9 @@ function removeMoveOptions(){
 }
 
 //Shoots a bullet
-async function shootBullet(tank){
+async function shootBullet(tank, redTankPosition = checkPosition('tank2'), blueTankPosition = checkPosition('tank1')){
 
-    //Fetching Position of tanks
-    let blueTankPosition = checkPosition('tank1');
-    let redTankPosition = checkPosition('tank2');
-
+    console.log(redTankPosition);
     bullet = document.createElement('div');
     bullet.classList.add('bullet');
 
