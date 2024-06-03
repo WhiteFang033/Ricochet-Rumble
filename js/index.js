@@ -220,15 +220,15 @@ for (let i = 0; i < 8; i++) {
                         }
 
                         if(semiRicoRed.dataset.orientation === 'South-East'){
-                            semiRicoRed.dataset.orientation = 'North-East';
+                            semiRicoRed.dataset.orientation = 'South-West';
                         }
-                        else if(semiRicoRed.dataset.orientation === 'North-East'){
+                        else if(semiRicoRed.dataset.orientation === 'South-West'){
                             semiRicoRed.dataset.orientation = 'North-West';
                         }
                         else if(semiRicoRed.dataset.orientation === 'North-West'){
-                            semiRicoRed.dataset.orientation = 'South-West';
+                            semiRicoRed.dataset.orientation = 'North-East';
                         }
-                        else if(semiRicoRed.dataset.orientation === 'North-West'){
+                        else if(semiRicoRed.dataset.orientation === 'North-East'){
                             semiRicoRed.dataset.orientation = 'South-East';
                         }
 
@@ -256,15 +256,15 @@ for (let i = 0; i < 8; i++) {
                         }
 
                         if(semiRicoRed.dataset.orientation === 'South-East'){
-                            semiRicoRed.dataset.orientation = 'South-West';
-                        }
-                        else if(semiRicoRed.dataset.orientation === 'South-West'){
-                            semiRicoRed.dataset.orientation = 'North-West';
-                        }
-                        else if(semiRicoRed.dataset.orientation === 'North-West'){
                             semiRicoRed.dataset.orientation = 'North-East';
                         }
                         else if(semiRicoRed.dataset.orientation === 'North-East'){
+                            semiRicoRed.dataset.orientation = 'North-West';
+                        }
+                        else if(semiRicoRed.dataset.orientation === 'North-West'){
+                            semiRicoRed.dataset.orientation = 'South-West';
+                        }
+                        else if(semiRicoRed.dataset.orientation === 'South-West'){
                             semiRicoRed.dataset.orientation = 'South-East';
                         }
 
@@ -532,15 +532,15 @@ for (let i = 0; i < 8; i++) {
                             }
 
                             if(semiRicoBlue.dataset.orientation === 'South-East'){
-                                semiRicoBlue.dataset.orientation = 'North-East';
+                                semiRicoBlue.dataset.orientation = 'South-West';
                             }
-                            else if(semiRicoBlue.dataset.orientation === 'North-East'){
+                            else if(semiRicoBlue.dataset.orientation === 'South-West'){
                                 semiRicoBlue.dataset.orientation = 'North-West';
                             }
                             else if(semiRicoBlue.dataset.orientation === 'North-West'){
-                                semiRicoBlue.dataset.orientation = 'South-West';
+                                semiRicoBlue.dataset.orientation = 'North-East';
                             }
-                            else if(semiRicoBlue.dataset.orientation === 'North-West'){
+                            else if(semiRicoBlue.dataset.orientation === 'North-East'){
                                 semiRicoBlue.dataset.orientation = 'South-East';
                             }
 
@@ -574,18 +574,18 @@ for (let i = 0; i < 8; i++) {
                             }
 
                             if(semiRicoBlue.dataset.orientation === 'South-East'){
-                                semiRicoBlue.dataset.orientation = 'South-West';
-                            }
-                            else if(semiRicoBlue.dataset.orientation === 'South-West'){
-                                semiRicoBlue.dataset.orientation = 'North-West';
-                            }
-                            else if(semiRicoBlue.dataset.orientation === 'North-West'){
                                 semiRicoBlue.dataset.orientation = 'North-East';
                             }
                             else if(semiRicoBlue.dataset.orientation === 'North-East'){
+                                semiRicoBlue.dataset.orientation = 'North-West';
+                            }
+                            else if(semiRicoBlue.dataset.orientation === 'North-West'){
+                                semiRicoBlue.dataset.orientation = 'South-West';
+                            }
+                            else if(semiRicoBlue.dataset.orientation === 'South-West'){
                                 semiRicoBlue.dataset.orientation = 'South-East';
                             }
-
+                            
                             rotateL.remove();
                             rotateR.remove();
                             shootBullet("blue")
@@ -810,9 +810,10 @@ async function checkHit(bulletPosition){
             let orientation = document.getElementById('semi-ricochet2').dataset.orientation;
             bullet.remove();
             console.log(bulletPosition.direction);
+
             if(orientation === 'South-East'){
-                if(bulletPosition.direction === 'North' || bulletPosition.direction === 'West'){
-                    return { value: "reflection", direction : reflection, orientation: orientation, reflector: semiRicoRed}
+            if(bulletPosition.direction === 'North' || bulletPosition.direction === 'West'){
+                return { value: "reflection", direction : reflection, orientation: orientation, reflector: semiRicoRed}
                 }
                 else{
                     return {value: 'obstacle'}
